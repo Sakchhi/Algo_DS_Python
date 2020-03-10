@@ -8,6 +8,7 @@ def main():
 
     # Extract birth dates from the user and determine if 21 or older
     date = prompt_and_extract_date()
+    print(date)
     while date is not None:
         if date <= born_before:
             print("Is at least 21 years of age: ", date)

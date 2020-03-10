@@ -14,19 +14,28 @@ comparable(otherDate) -- Compare to decide if >, <, >=, <=, ==, !=
 toString -- Returns string representation
 """
 
-
+from datetime import datetime, timedelta
 class Date:
 
     def __init__(self, month, day, year):
-        self._julian_day = 0
+        # self._julian_day = 0
+        # print(month, day, year)
         assert self._isValidGregorian(month, day, year), "Invalid Gregorian date."
-        tmp = 0
-        if month < 3:
-            tmp = -1
-        self._julian_day = day - 32075 + \
-                           (1461 * (year + 4800 + tmp) // 4) + \
-                           (367 * (month - 2 - tmp * 12) // 12) + \
-                           (3 * ((year + 4900 + tmp) // 100) // 4)
+        # tmp = 0
+        # if month < 3:
+        #     tmp = -1
+        # self._julian_day = day - 32075 + \
+        #                    (1461 * (year + 4800 + tmp) // 4) + \
+        #                    (367 * (month - 2 - tmp * 12) // 12) + \
+        #                    (3 * ((year + 4900 + tmp) // 100) // 4)
+        DAY = timedelta(1)
+        JULIAN_EPOCH = datetime(2000, 1, 1, 12)  # noon (the epoch name is unrelated)
+        J2000_JD = timedelta(2451545)  # julian epoch in julian dates
+
+        dt = datetime(year, month, day)  # get datetime object
+        day_of_year = (dt - datetime(dt.year, 1, 1)) // DAY + 1  # Jan the 1st is day 1
+        julian_day = (dt.replace(hour=12) - JULIAN_EPOCH + J2000_JD)//DAY
+        self._julian_day = julian_day
 
     def month(self):
         return (self._toGregorian())[0]
@@ -96,3 +105,4 @@ class Date:
         if year < -4713:
             return False
         return True
+
