@@ -21,4 +21,6 @@
     - **Complex ADTs** -- Composed of a collection of data values such as Python list or dictionary. Implemented using a particular *data structure*
 - **Collection** -- Group of values with no implied organization or relationship between the individual values
 - **Container** -- Any data structure or abstract data type that stores and organizes a collection -- *elements, empty*
-- **Sequence** -- Container in which elements are arranged in linear order from front to back
+- **Sequence** -- Container in which elements are arranged in linear order from front to back, with each element accessible by position. *eg strings, tuples, list*
+    - * **A sequence is a list, but a list is not necessarily a sequence since there is no requirement that a list provide access to its elements by position** *
+- **Sorted Sequence** -- One in which the position of elements is based on a prescribed relationship between each element and its successor
