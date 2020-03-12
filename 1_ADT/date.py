@@ -54,6 +54,12 @@ class Date:
         return ((13 * month + 3) // 5 + day + \
                 year + year // 4 - year // 100 + year // 400) % 7
 
+    def month_name(self):
+        month = self._toGregorian()[0]
+        MONTH_LIST = ['January', 'February', 'March', 'April', 'May', 'June',
+                      'July', 'August', 'September', 'October', 'November', 'December']
+        return MONTH_LIST[month-1]
+
     def __str__(self):
         month, day, year = self._toGregorian()
         return "%02d/%02d/%04d" % (month, day, year)
