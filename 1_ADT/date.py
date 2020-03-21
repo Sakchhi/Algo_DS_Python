@@ -60,6 +60,12 @@ class Date:
                       'July', 'August', 'September', 'October', 'November', 'December']
         return MONTH_LIST[month-1]
 
+    def advance_by(self, num):
+        self._julian_day = self._julian_day + 1
+
+    def num_days(self, other_date):
+        print(other_date._julian_day - self._julian_day)
+
     def __str__(self):
         month, day, year = self._toGregorian()
         return "%02d/%02d/%04d" % (month, day, year)
@@ -87,7 +93,8 @@ class Date:
         return month, day, year
 
     def is_leap_year(self):
-        return False
+        year = self._toGregorian()[2]
+        return (year % 4 == 0) and (year % 400 == 0 or year % 100 != 0)
 
     def _isValidGregorian(self, month, day, year):
         if month<1 or month > 12 or type(month) != int:
@@ -112,3 +119,9 @@ class Date:
             return False
         return True
 
+if __name__ == '__main__':
+    date = Date(6, 28, 1991)
+    # date.advance_by(1)
+    print(date)
+    date.num_days(Date(6, 29, 1991))
+    print(date.is_leap_year())
