@@ -38,9 +38,9 @@ def draw(grid):
         print('|', end='')
         for j in range(grid.num_cols()):
             if grid[i, j] == 0:
-                print(' ', end='|')
+                print('.', end='|')
             else:
-                print('X', end='|')
+                print('@', end='|')
         print("\n==", '=='*GRID_HEIGHT, sep='')
     print('\n\n')
 
